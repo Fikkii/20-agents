@@ -25,11 +25,7 @@ SECRET_KEY = 'django-insecure-y_w(**t1!dp8rlge&v39l=%(gwe6^vbd=d+(83zu!*(3#^-m4r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    "localhost",
-    "fikki.com.ng"
-]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
