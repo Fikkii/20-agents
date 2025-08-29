@@ -1,0 +1,30 @@
+keyword_research_task:
+  description: >
+    Research trending and relevant SEO keywords for the topic: {{topic}}.
+    Include long-tail keywords, search volume, and competitiveness where possible.
+  expected_output: >
+    A structured list of 10–15 SEO keywords (including long-tail variations)
+    relevant to {{topic}}.
+  output_key: seo_keywords
+  agent: keyword_researcher
+
+seo_writing_task:
+  description: >
+    Take the content draft provided below and optimize it for SEO
+    using the researched keywords.
+    Draft: {{draft_content}}
+  expected_output: >
+    An SEO-optimized article (600–1000 words) that integrates the keywords
+    naturally into headings, subheadings, and body text.
+  output_key: optimized_content
+  agent: seo_writer
+
+editing_task:
+  description: >
+    Edit the SEO-optimized article for grammar, readability, and clarity.
+  expected_output: >
+    A polished, professional, SEO-friendly article that is ready for
+    publication.
+  output_key: final_article
+  agent: editor
+

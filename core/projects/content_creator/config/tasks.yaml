@@ -1,0 +1,27 @@
+brainstorm_content:
+  description: >
+    Research and brainstorm 5 trending content ideas around {topic}.
+    Include a catchy title, target audience, and why it will perform well.
+  expected_output: >
+    A structured list of 5 high-quality, trending, and SEO-friendly content ideas 
+    with explanations.
+  agent: content_creator
+
+write_blog_post:
+  description: >
+    "Write a 600-word blog post on the topic: 
+    {{topic}}. 
+    Use a friendly tone, break into sections, and include a call-to-action at the end.
+  expected_output: >
+    A polished blog article in markdown format, ready for publication.
+  agent: content_creator
+
+social_media_copy:
+  description: >
+    Create 3 variations of social media posts (Twitter/X, LinkedIn, Instagram) 
+    to promote the blog post. Each should be short, engaging, 
+    and platform-optimized.
+  expected_output: >
+    Three different versions of short-form content (tweets, LinkedIn blurb, Instagram caption).
+  agent: content_creator
+

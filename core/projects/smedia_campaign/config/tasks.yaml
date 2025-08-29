@@ -1,0 +1,40 @@
+trend_research_task:
+  description: >
+    Research current social media trends, hashtags, and content styles
+    related to the campaign topic: {{topic}}.
+  expected_output: >
+    A list of 10–15 trending hashtags, content formats (e.g., reels, carousels),
+    and viral content patterns.
+  agent: trend_researcher
+
+copywriting_task:
+  description: >
+    Write 3 variations of short-form social media posts for each platform
+    (Twitter/X, LinkedIn, Instagram) using the trends from trend_research_task
+    and focusing on {{topic}}.
+  expected_output: >
+    Nine social media posts: 3 for Twitter, 3 for LinkedIn, 3 for Instagram,
+    optimized for tone and engagement.
+  agent: copywriter
+
+design_task:
+  description: >
+    Based on the posts
+    generate visual design prompt ideas.
+    Suggest visuals suitable for Instagram, LinkedIn, and Twitter,
+    including color schemes, layouts, and styles.
+  expected_output: >
+    A list of 6–9 creative AI art prompts or design directions that
+    complement the campaign posts.
+  agent: designer
+
+scheduling_task:
+  description: >
+    Create a 1–2 week posting calendar that schedules the posts copywriting_task
+    and their visuals gotten from design_task.
+    Distribute them across days of the week with best posting times.
+  expected_output: >
+    A professional campaign calendar showing which content goes live on
+    which platform and when.
+  agent: scheduler
+

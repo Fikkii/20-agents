@@ -1,0 +1,53 @@
+research_task:
+  description: >
+    Research the project topic: {{topic}}.
+    Collect relevant information, statistics, case studies, and professional references
+    from credible sources such as academic journals, government publications,
+    industry reports, and reliable news outlets.
+  expected_output: >
+    A comprehensive research summary with key findings, references, and
+    supporting evidence (bullet points are acceptable).
+  output_key: research_notes
+  agent: researcher
+
+outline_task:
+  description: >
+    Using the research notes below, create a structured outline
+    for a professional project document:
+    {{research_notes}}
+  expected_output: >
+    A detailed outline with sections, subsections, and key points
+    organized logically for professional readability.
+  output_key: project_outline
+  agent: outline_creator
+
+writing_task:
+  description: >
+    Write a first draft of the project document based on the outline and research:
+    Outline: {{project_outline}}
+    Research Notes: {{research_notes}}
+  expected_output: >
+    A professionally written draft (800–1200 words) with clear sections,
+    proper flow, and professional tone.
+  output_key: project_draft
+  agent: writer
+
+editing_task:
+  description: >
+    Edit and refine the draft document below:
+    {{project_draft}}
+    Ensure proper grammar, clarity, formatting, and a polished professional style.
+  expected_output: >
+    An edited, polished version of the draft that is error-free and easy to read.
+  output_key: edited_document
+  agent: editor
+
+review_task:
+  description: >
+    Check if it aligns with professional project writing standards
+    and fulfills the requirements for {{topic}}.
+  expected_output: >
+    A final, approved project document that is ready for submission
+    to stakeholders or clients.
+  agent: reviewer
+

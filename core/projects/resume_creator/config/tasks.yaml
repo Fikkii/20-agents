@@ -1,0 +1,37 @@
+job_analysis_task:
+  description: >
+    Analyze the following job description and extract key skills, requirements,
+    and keywords:
+    {{job_description}}
+  expected_output: >
+    A structured list of required skills, qualifications, and keywords.
+  agent: job_description_analyzer
+
+resume_task:
+  description: >
+    Using the analysis from job_analysis_task
+    tailor the following resume:
+    {{resume}}
+    to align better with the job requirements.
+  expected_output: >
+    An improved resume adapted for the target role.
+  agent: resume_tailor
+
+cover_letter_task:
+  description: >
+    Based on the analysis from job_analysis_task
+    and the tailored resume resume_task
+    draft a professional and engaging cover letter for this job.
+  expected_output: >
+    A polished cover letter tailored to the role.
+  agent: cover_letter_writer
+
+review_task:
+  description: >
+    Review the tailored resume resume_task
+    and the cover letter cover_letter_task
+    for professionalism, tone, and clarity.
+    Suggest or make final improvements.
+  expected_output: >
+    A final polished job application package containing both resume and cover letter.
+  agent: reviewer

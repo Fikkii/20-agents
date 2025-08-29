@@ -1,0 +1,130 @@
+{% load static %}
+{% include 'base.html' %}
+{% block content %}
+<style>
+body {
+    background: #0b0b0b;
+    color: #eee;
+    font-family: monospace;
+}
+
+/* Global terminal style */
+.terminal {
+    background: #111;
+    font-family: monospace;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    border: 1px dashed #0f0;
+}
+
+/* Task container */
+.task {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Subtle hover effect */
+.task:hover {
+    transform: scale(1.01);
+}
+
+/* Task header */
+.task-description {
+    font-weight: bold;
+    color: #0ff;
+    margin-bottom: .5rem;
+    border-bottom: 1px dashed #0ff;
+    padding-bottom: .3rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Collapsible label */
+.toggle-label {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Collapsible output */
+.task-output {
+    max-height: 150px;  /* collapsed preview */
+    overflow-y: hidden;
+    transition: max-height 0.4s ease;
+    color: #ccc;
+}
+.task-output.expanded {
+    max-height: 5000px; /* expanded */
+}
+
+/* Final result highlight */
+.result-box {
+    background: #000;
+    color: #0f0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #0ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    text-align: center;
+}
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="d-flex justify-content-between align-items-center mx-4">
+            <div>
+                <h2 class="m-0">Agent Execution Completed</h2>
+                <p class="mb-0">Below is the result, tasks can be expanded by clicking on it...</p>
+            </div>
+            <div>
+                <button class="btn btn-danger" onclick="window.history.back();">Go Back</button>
+                <a href="{% url 'dashboard' %}" class="btn btn-success">Try Other Agents</a>
+            </div>
+        </div>
+        <div class="terminal">
+            {{ result|safe }}
+        </div>
+
+        <h2>📋 Task Outputs:</h2>
+        {% for task in tasks %}
+        <div class="task">
+            <div class="terminal">
+                <div class="task-description">
+                    Task {{ forloop.counter }}: {{ task.description }}
+                    <span class="toggle-label">
+                        {% if forloop.first %}[Click to collapse]{% else %}[Click to expand]{% endif %}
+                    </span>
+                </div>
+                <div class="task-output {% if forloop.first %}expanded{% endif %}">
+                    {{ task.output|safe }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.task-description').forEach(header => {
+        header.addEventListener('click', () => {
+            const output = header.nextElementSibling;
+            const label = header.querySelector('.toggle-label');
+            output.classList.toggle('expanded');
+            if (output.classList.contains('expanded')) {
+                label.textContent = "[Click to collapse]";
+            } else {
+                label.textContent = "[Click to expand]";
+            }
+        });
+    });
+</script>
+
+{% endblock %}
+

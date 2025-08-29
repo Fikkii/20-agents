@@ -1,0 +1,70 @@
+{% load static %}
+{% include 'base.html'%}
+{% block title %} <title>Dashboard</title> {% endblock %}
+{% block content %}
+<style type="text/css" media="screen">
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+.agent-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    background: linear-gradient(145deg, #1c1c1c, #2a2a2a);
+}
+
+/* Lift effect on hover */
+.agent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Arrow icon hover */
+.agent-card i.clickable-icon:hover {
+    color: #00d4ff;
+    transform: scale(1.2);
+    transition: all 0.2s ease;
+}
+
+/* Optional: smaller text for description */
+.agent-card .card-text {
+    line-height: 1.4;
+}
+
+</style>
+  <!-- Main content -->
+  <div class="container my-4">
+      <div>
+          <h3>Available Agents</h3>
+          <p>
+          This are tools that'll help you one way or the other
+          </p>
+      </div>
+      <div class="row g-1">
+          {% for agent in agents %}
+          <div class="col-md-4 col-sm-6 col-12 mb-4">
+              <a href="{{ agent.link }}" class="text-decoration-none">
+                  <div class="card bg-dark text-light h-100 rounded-4 shadow-sm agent-card p-4 d-flex flex-column justify-content-between">
+
+                      <!-- Card Title -->
+                      <h5 class="card-title fw-bold mb-2">{{ agent.name }}</h5>
+
+                      <!-- Card Description -->
+                      <p class="card-text mb-3" style="font-size: 0.9rem;">{{ agent.description }}</p>
+
+                      <!-- Icon CTA -->
+                      <div class="d-flex justify-content-end mt-auto">
+                          <i class="bi bi-arrow-right-circle fs-4 text-light clickable-icon"></i>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+  {% endblock %}
+
