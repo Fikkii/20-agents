@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import path, include
 
 from .forms import ContentCreatorForm, ResumeCreatorForm, ResearcherForm, SeoOptimizerForm, SmediaCampaignForm
@@ -9,11 +10,11 @@ from .projects.researcher.main import ResearcherCrew
 from .projects.seo_optimizer.main import SeoOptimizerCrew
 from .projects.smedia_campaign.main import SmediaCampaignCrew
 
-from .views import CrewView
+from .views import CrewView, dashboard_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("accounts.urls")),
+    path("", dashboard_view, name="home"),
 ]
 
 agent_urls = [
@@ -40,3 +41,4 @@ agent_urls = [
 ]
 
 urlpatterns = urlpatterns + agent_urls
+

@@ -5,6 +5,21 @@ from django.shortcuts import render
 
 from django.views import View
 
+# Example data (replace with DB query later)
+AGENTS = [
+    {"name": "Content Creator", "description": "Brainstorm, write, and generate social media contents", "link": "/agents/content-creator"},
+    {"name": "Resume Creator", "description": "Generate your perfect Resume as a Job seeker", "link": "/agents/resume-creator"},
+    {"name": "Researcher", "description": "The perfect agent, for analyst who will like to jumpstart their research", "link": "/agents/researcher"},
+    {"name": "SEO Optimizer", "description": "Get Noticed by search engines with this amazing tool", "link": "/agents/seo-optimizer"},
+    {"name": "Social Media Campaign", "description": "Generate Campaign for your Social Media Influencing", "link": "/agents/smedia-campaign"},
+    # ... add all 20 agents
+]
+
+def dashboard_view(request):
+    return render(request, "dashboard.html", {
+        "agents": AGENTS
+    })
+
 class CrewView(View):
     form_class = None
     crew_runner = None
